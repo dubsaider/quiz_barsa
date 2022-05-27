@@ -10,7 +10,7 @@ def yabychiy_print(string):
     cls()
     for char in string:
         print(Fore.GREEN + char, end="", flush=True)
-        # time.sleep(0.25)
+        time.sleep(0.25)
 
 
 colorama.init()
@@ -29,10 +29,18 @@ for question in questions:
     while answer.lower() != questions.get(question).lower():
         yabychiy_print('Ожидаю ответ...\n')
         answer = input()
-        for i in tqdm(list(range(300))):
-            time.sleep(0.1)
+        for i in tqdm(list(range(120))):
+            time.sleep(1)
     yabychiy_print('Переходим к следующему шагу...\n')
 
 yabychiy_print(
     'Программа инициации системы сетевого оборудования городского водоканала города Костуж завершена...\nДля '
-    'успешного завершения подключитесь к сети "Abeb"')
+    'успешного завершения подключитесь к сети "Abeb"\nДо отключения системы отлось 5 минут. Рекомендуем запомнить '
+    'сеть...\nЗапущен обратный отсчет...')
+
+for i in tqdm(list(range(300))):
+    time.sleep(1)
+
+yabychiy_print('Ваше время подошло к концу...')
+
+os.system('shutdown /r /t 1')  # linux off - 'poweroff'
